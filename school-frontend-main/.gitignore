@@ -1,0 +1,11 @@
+# Dependencies
+/node_modules
+
+# Build output from Tailwind CSS
+/public/style.css
+
+# Environment variables (เผื่อใช้ในอนาคต)
+.env
+
+# System files
+.DS_Store

@@ -1,0 +1,15 @@
+const mysql = require('mysql2');
+require('dotenv').config(); // โหลดค่าจากไฟล์ .env
+
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+// ใช้ .promise() เพื่อให้เราสามารถใช้ async/await ได้
+module.exports = pool.promise();

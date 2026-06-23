@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - School Management</title>
+    <link href="./public/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        html, body { font-family: "Noto Sans Thai", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+    </style>
+    <link rel="icon" type="image/png" href="https://iili.io/KwRQIiG.png">
+    <script src="./js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <div class="flex-shrink-0">
+                    <a href="./dashboard.html" class="flex items-center space-x-3">
+                        <img class="h-8 w-auto" src="https://iili.io/KwRQIiG.png" alt="School Logo">
+                        <span class="text-xl font-bold text-gray-800">Student Management</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./dashboard.html"
+                        class="text-gray-600 hover:text-blue-600 transition-colors duration-300">แดชบอร์ด</a>
+                    <a href="./student.html"
+                        class="text-blue-600 font-semibold border-b-2 border-blue-600 px-2 py-1">ข้อมูลนักเรียน</a>
+                    <a href="./attendance.html"
+                        class="text-gray-600 hover:text-blue-600 transition-colors duration-300">เช็คชื่อ</a>
+                    <a href="./scores.html"
+                        class="text-gray-600 hover:text-blue-600 transition-colors duration-300">คะแนน</a>
+                </div>
+
+                <div class="flex items-center">
+
+                    <div class="hidden md:flex items-center space-x-3">
+                        <span id="user-name" class="text-sm font-medium text-gray-700">Loading...</span>
+                        <div class="relative">
+                            <button type="button" id="profile-button"
+                                class="flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-9 w-9 rounded-full object-cover cursor-pointer"
+                                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                    alt="Profile Icon">
+                            </button>
+                            <div id="profile-dropdown"
+                                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+                                role="menu">
+                                <a href="#" id="logout-btn"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                    ออกจากระบบ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:hidden ml-4">
+                        <button id="mobile-menu-button" type="button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="md:hidden hidden cursor-pointer" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="./dashboard.html"
+                    class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">แดชบอร์ด</a>
+                <a href="./student.html"
+                    class="text-blue-700 bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">ข้อมูลนักเรียน</a>
+                <a href="./attendance.html"
+                    class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">เช็คชื่อ</a>
+                <a href="./scores.html"
+                    class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">คะแนน</a>
+                <div class="border-t border-gray-200 my-2"></div>
+                <a href="#" id="mobile-logout-btn"
+                    class="text-red-600 hover:bg-red-50 block px-3 py-2 rounded-md text-base font-medium">
+                    ออกจากระบบ
+                </a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+
+    <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-md p-6 mt-8">
+
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">รายชื่อนักเรียน</h1>
+            <div class="w-1/4">
+                <select id="class-select"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer">
+                    <option value="">-- กรุณาเลือกชั้นเรียน --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full">
+                <thead class="border-b-2 border-gray-200">
+                    <tr>
+                        <th class="p-4 text-left text-sm font-semibold text-gray-600">เลขประจำตัวนักเรียน</th>
+                        <th class="p-4 text-left text-sm font-semibold text-gray-600">เลขที่</th>
+                        <th class="p-4 text-left text-sm font-semibold text-gray-600">ชื่อ</th>
+                        <th class="p-4 text-left text-sm font-semibold text-gray-600">ระดับชั้น</th>
+                        <th class="p-4 text-left text-sm font-semibold text-gray-600">ผู้ปกครอง</th>
+                        <th class="p-4 text-left text-sm font-semibold text-gray-600">เบอร์โทร</th>
+                        <th class="p-4 text-right text-sm font-semibold text-gray-600">จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full">
+            </table>
+        </div>
+
+        <!-- <div class="my-4">
+            <label for="test-file">Test File Upload:</label>
+            <input type="file" id="test-file-input">
+        </div> -->
+        <div class="mt-6 flex justify-end">
+            <div id="add-student-btn" type="button"
+                class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300 cursor-pointer text-center">
+                เพิ่มนักเรียน
+            </div>
+        </div>
+    </div>
+</body>
+
+</div>
+
+<script src="./js/api.js"></script>
+<script src="./js/students.js" defer></script>
+<script src="./js/main.js"></script>
+
+</body>
+
+</html>

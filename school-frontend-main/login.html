@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - School Management</title>
+    <link href="./public/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        html, body { font-family: "Noto Sans Thai", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+    </style>
+    <link rel="icon" type="image/png" href="https://iili.io/KwRQIiG.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <main class="text-center">
+        <img class="h-32 w-32 mx-auto mb-4" src="https://iili.io/KwRQIiG.png" alt="School Logo">
+        <h1 class="text-3xl font-bold text-gray-800">Banmaehoingern School</h1>
+        <p class="text-lg text-gray-600 mb-8">Student Management</p>
+
+        <div class="bg-white p-8 rounded-lg shadow-md w-96">
+            <h2 class="text-2xl font-semibold mb-6">Login</h2>
+            <form id="login-form">
+                <div class="mb-4">
+                    <input type="text" id="username" placeholder="Username"
+                        class="w-full p-3 border-b-2 focus:border-blue-500 focus:outline-none transition" required>
+                </div>
+                <div class="mb-6">
+                    <input type="password" id="password" placeholder="Password"
+                        class="w-full p-3 border-b-2 focus:border-blue-500 focus:outline-none transition" required>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer">Login</button>
+            </form>
+        </div>
+
+        <footer class="mt-8 flex justify-center items-center gap-2">
+            <a href="https://www.bmngschool.ac.th/" target="_blank" class="hover:opacity-80 transition-opacity">
+                <img class="h-4 w-4" src="https://iili.io/KwRQIiG.png" alt="logo">
+            </a>
+            <p class="text-sm text-gray-500">
+                Official Website:
+                <a href="https://www.bmngschool.ac.th/" target="_blank"
+                    class="font-semibold text-blue-600 hover:underline">
+                    Go Now!!
+                </a>
+            </p>
+        </footer>
+
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/login.js" defer></script>
+</body>
+
+</html>
